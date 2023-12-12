@@ -622,156 +622,160 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Stack(
-        children: <Widget>[
-          _currentView,
-          Positioned(
-              right: 0,
-              left: 0,
-              top: 0,
-              height: MediaQuery.of(context).size.height/7,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    Colors.black.withOpacity(0.7),
-                    Colors.black.withOpacity(0.6),
-                    Colors.black.withOpacity(0.5),
-                    Colors.black.withOpacity(0.4),
-                    Colors.black.withOpacity(0.3),
-                    Colors.black.withOpacity(0.2),
-                    Colors.black.withOpacity(0.1),
-                    Colors.black.withOpacity(0.05),
-                    Colors.black.withOpacity(0),
-                    // Colors.black.withOpacity(0.2),
-                    // Colors.black.withOpacity(0.5),
-                    // Colors.black.withOpacity(0.8),
-                  ],
-                    begin: AlignmentDirectional.topCenter,
-                    end: AlignmentDirectional.bottomCenter,
-                  )
-                ),
-              )),
-          Positioned(
-              right: 0,
-              left: 0,
-              bottom: 0,
-              height: MediaQuery.of(context).size.height/7,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    Colors.black.withOpacity(0.7),
-                    Colors.black.withOpacity(0.6),
-                    Colors.black.withOpacity(0.5),
-                    Colors.black.withOpacity(0.4),
-                    Colors.black.withOpacity(0.3),
-                    Colors.black.withOpacity(0.2),
-                    Colors.black.withOpacity(0.1),
-                    Colors.black.withOpacity(0.05),
-                    Colors.black.withOpacity(0),
-                    // Colors.black.withOpacity(0.2),
-                    // Colors.black.withOpacity(0.5),
-                    // Colors.black.withOpacity(0.8),
-                  ],
-                    begin: AlignmentDirectional.bottomCenter,
-                    end: AlignmentDirectional.topCenter,
-                  )
-                ),
-              )),
-          Visibility(
-            visible: widget.progressPosition != ProgressPosition.none,
-            child: Align(
-              alignment: widget.progressPosition == ProgressPosition.top
-                  ? Alignment.topCenter
-                  : Alignment.bottomCenter,
-              child: SafeArea(
-                bottom: widget.inline ? false : true,
-                // we use SafeArea here for notched and bezeles phones
+    return Directionality(
+      textDirection: widget.textDirection ?? TextDirection.ltr,
+      child: Container(
+        color: Colors.white,
+        child: Stack(
+          children: <Widget>[
+            _currentView,
+            Positioned(
+                right: 0,
+                left: 0,
+                top: 0,
+                height: MediaQuery.of(context).size.height/7,
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Colors.black.withOpacity(0.7),
+                      Colors.black.withOpacity(0.6),
+                      Colors.black.withOpacity(0.5),
+                      Colors.black.withOpacity(0.4),
+                      Colors.black.withOpacity(0.3),
+                      Colors.black.withOpacity(0.2),
+                      Colors.black.withOpacity(0.1),
+                      Colors.black.withOpacity(0.05),
+                      Colors.black.withOpacity(0),
+                      // Colors.black.withOpacity(0.2),
+                      // Colors.black.withOpacity(0.5),
+                      // Colors.black.withOpacity(0.8),
+                    ],
+                      begin: AlignmentDirectional.topCenter,
+                      end: AlignmentDirectional.bottomCenter,
+                    )
                   ),
-                  child: PageBar(
-                    widget.storyItems
-                        .map((it) => PageData(it!.duration, it.shown))
-                        .toList(),
-                    this._currentAnimation,
-                    key: UniqueKey(),
-                    indicatorHeight: widget.inline
-                        ? IndicatorHeight.small
-                        : IndicatorHeight.large,
-                    indicatorColor: widget.indicatorColor,
-                    indicatorForegroundColor: widget.indicatorForegroundColor,
+                )),
+            Positioned(
+                right: 0,
+                left: 0,
+                bottom: 0,
+                height: MediaQuery.of(context).size.height/7,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Colors.black.withOpacity(0.7),
+                      Colors.black.withOpacity(0.6),
+                      Colors.black.withOpacity(0.5),
+                      Colors.black.withOpacity(0.4),
+                      Colors.black.withOpacity(0.3),
+                      Colors.black.withOpacity(0.2),
+                      Colors.black.withOpacity(0.1),
+                      Colors.black.withOpacity(0.05),
+                      Colors.black.withOpacity(0),
+                      // Colors.black.withOpacity(0.2),
+                      // Colors.black.withOpacity(0.5),
+                      // Colors.black.withOpacity(0.8),
+                    ],
+                      begin: AlignmentDirectional.bottomCenter,
+                      end: AlignmentDirectional.topCenter,
+                    )
+                  ),
+                )),
+            Visibility(
+              visible: widget.progressPosition != ProgressPosition.none,
+              child: Align(
+                alignment: widget.progressPosition == ProgressPosition.top
+                    ? Alignment.topCenter
+                    : Alignment.bottomCenter,
+                child: SafeArea(
+                  bottom: widget.inline ? false : true,
+                  // we use SafeArea here for notched and bezeles phones
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    child: PageBar(
+                      widget.storyItems
+                          .map((it) => PageData(it!.duration, it.shown))
+                          .toList(),
+                      this._currentAnimation,
+                      textDirection: widget.textDirection,
+                      key: UniqueKey(),
+                      indicatorHeight: widget.inline
+                          ? IndicatorHeight.small
+                          : IndicatorHeight.large,
+                      indicatorColor: widget.indicatorColor,
+                      indicatorForegroundColor: widget.indicatorForegroundColor,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Align(
-              alignment: Alignment.centerRight,
-              heightFactor: 1,
-              child: GestureDetector(
-                onTapDown: (details) {
-                  widget.controller.pause();
-                },
-                onTapCancel: () {
-                  widget.controller.play();
-                },
-                onTapUp: (details) {
-                  // if debounce timed out (not active) then continue anim
-                  if (_nextDebouncer?.isActive == false) {
+            Align(
+                alignment: Alignment.centerRight,
+                heightFactor: 1,
+                child: GestureDetector(
+                  onTapDown: (details) {
+                    widget.controller.pause();
+                  },
+                  onTapCancel: () {
                     widget.controller.play();
-                  } else {
-                    widget.controller.next();
-                  }
-                },
-                onVerticalDragStart: widget.onVerticalSwipeComplete == null
-                    ? null
-                    : (details) {
-                        widget.controller.pause();
-                      },
-                onVerticalDragCancel: widget.onVerticalSwipeComplete == null
-                    ? null
-                    : () {
-                        widget.controller.play();
-                      },
-                onVerticalDragUpdate: widget.onVerticalSwipeComplete == null
-                    ? null
-                    : (details) {
-                        if (verticalDragInfo == null) {
-                          verticalDragInfo = VerticalDragInfo();
-                        }
+                  },
+                  onTapUp: (details) {
+                    // if debounce timed out (not active) then continue anim
+                    if (_nextDebouncer?.isActive == false) {
+                      widget.controller.play();
+                    } else {
+                      widget.controller.next();
+                    }
+                  },
+                  onVerticalDragStart: widget.onVerticalSwipeComplete == null
+                      ? null
+                      : (details) {
+                          widget.controller.pause();
+                        },
+                  onVerticalDragCancel: widget.onVerticalSwipeComplete == null
+                      ? null
+                      : () {
+                          widget.controller.play();
+                        },
+                  onVerticalDragUpdate: widget.onVerticalSwipeComplete == null
+                      ? null
+                      : (details) {
+                          if (verticalDragInfo == null) {
+                            verticalDragInfo = VerticalDragInfo();
+                          }
 
-                        verticalDragInfo!.update(details.primaryDelta!);
+                          verticalDragInfo!.update(details.primaryDelta!);
 
-                        // TODO: provide callback interface for animation purposes
-                      },
-                onVerticalDragEnd: widget.onVerticalSwipeComplete == null
-                    ? null
-                    : (details) {
-                        widget.controller.play();
-                        // finish up drag cycle
-                        if (!verticalDragInfo!.cancel &&
-                            widget.onVerticalSwipeComplete != null) {
-                          widget.onVerticalSwipeComplete!(
-                              verticalDragInfo!.direction);
-                        }
+                          // TODO: provide callback interface for animation purposes
+                        },
+                  onVerticalDragEnd: widget.onVerticalSwipeComplete == null
+                      ? null
+                      : (details) {
+                          widget.controller.play();
+                          // finish up drag cycle
+                          if (!verticalDragInfo!.cancel &&
+                              widget.onVerticalSwipeComplete != null) {
+                            widget.onVerticalSwipeComplete!(
+                                verticalDragInfo!.direction);
+                          }
 
-                        verticalDragInfo = null;
-                      },
-              )),
-          Align(
-            alignment: Alignment.centerLeft,
-            heightFactor: 1,
-            child: SizedBox(
-                child: GestureDetector(onTap: () {
-                  widget.controller.previous();
-                }),
-                width: 70),
-          ),
-        ],
+                          verticalDragInfo = null;
+                        },
+                )),
+            Align(
+              alignment: Alignment.centerLeft,
+              heightFactor: 1,
+              child: SizedBox(
+                  child: GestureDetector(onTap: () {
+                    widget.controller.previous();
+                  }),
+                  width: 70),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -794,6 +798,7 @@ class PageBar extends StatefulWidget {
   final IndicatorHeight indicatorHeight;
   final Color? indicatorColor;
   final Color? indicatorForegroundColor;
+  final TextDirection? textDirection;
 
   PageBar(
     this.pages,
@@ -801,6 +806,7 @@ class PageBar extends StatefulWidget {
     this.indicatorHeight = IndicatorHeight.large,
     this.indicatorColor,
     this.indicatorForegroundColor,
+    this.textDirection,
     Key? key,
   }) : super(key: key);
 
@@ -846,6 +852,7 @@ class PageBarState extends State<PageBar> {
                 right: widget.pages.last == it ? 0 : this.spacing),
             child: StoryProgressIndicator(
               isPlaying(it) ? widget.animation!.value : (it.shown ? 1 : 0),
+              textDirection: widget.textDirection,
               indicatorHeight:
                   widget.indicatorHeight == IndicatorHeight.large ? 5 : 3,
               indicatorColor: widget.indicatorColor,
@@ -866,18 +873,20 @@ class StoryProgressIndicator extends StatelessWidget {
   final double indicatorHeight;
   final Color? indicatorColor;
   final Color? indicatorForegroundColor;
+  final TextDirection? textDirection;
 
   StoryProgressIndicator(
     this.value, {
     this.indicatorHeight = 5,
     this.indicatorColor,
     this.indicatorForegroundColor,
+    this.textDirection,
   });
 
   @override
   Widget build(BuildContext context) {
     return RotatedBox(
-      quarterTurns: 2,
+      quarterTurns: textDirection == TextDirection.rtl ? 2 : 0,
       child: CustomPaint(
         size: Size.fromHeight(
           this.indicatorHeight,
