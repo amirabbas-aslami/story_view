@@ -180,14 +180,18 @@ class StoryItem {
         child: Container(
           color: Colors.grey[100],
           child: Container(
-            color: Colors.black,
+            color: Colors.red,
             child: Stack(
               children: <Widget>[
-                StoryImage.url(
-                  url,
-                  controller: controller,
-                  fit: imageFit,
-                  requestHeaders: requestHeaders,
+                // StoryImage.url(
+                //   url,
+                //   controller: controller,
+                //   fit: imageFit,
+                //   requestHeaders: requestHeaders,
+                // ),
+                Container(
+                  height: 150,
+                  color: Colors.blue,
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 16),
@@ -340,16 +344,16 @@ class StoryItem {
         decoration: BoxDecoration(
             color: Colors.grey[100],
             borderRadius: BorderRadius.vertical(
-              top: Radius.circular(roundedTop ? 8 : 50),
-              bottom: Radius.circular(roundedBottom ? 8 : 50),
+              top: Radius.circular(roundedTop ? 8 : 0),
+              bottom: Radius.circular(roundedBottom ? 8 : 0),
             ),
             image: DecorationImage(
-              image: AssetImage(''),
+              image: image,
               fit: BoxFit.cover,
             )),
         child: Container(
           margin: EdgeInsets.only(
-            bottom: 50,
+            bottom: 16,
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 24,
