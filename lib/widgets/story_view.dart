@@ -353,7 +353,7 @@ class StoryItem {
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 24,
-            vertical: 8,
+            vertical: 50,
           ),
           child: Align(
             alignment: Alignment.bottomLeft,
@@ -636,7 +636,7 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 50,
+                    vertical: 8,
                   ),
                   child: PageBar(
                     widget.storyItems
