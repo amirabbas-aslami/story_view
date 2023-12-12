@@ -849,12 +849,15 @@ class PageBarState extends State<PageBar> {
             child: Container(
               padding: EdgeInsets.only(
                   right: widget.pages.last == it ? 0 : this.spacing),
-              child: StoryProgressIndicator(
-                isPlaying(it) ? widget.animation!.value : (it.shown ? 1 : 0),
-                indicatorHeight:
-                    widget.indicatorHeight == IndicatorHeight.large ? 5 : 3,
-                indicatorColor: widget.indicatorColor,
-                indicatorForegroundColor: widget.indicatorForegroundColor,
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: StoryProgressIndicator(
+                  isPlaying(it) ? widget.animation!.value : (it.shown ? 1 : 0),
+                  indicatorHeight:
+                      widget.indicatorHeight == IndicatorHeight.large ? 5 : 3,
+                  indicatorColor: widget.indicatorColor,
+                  indicatorForegroundColor: widget.indicatorForegroundColor,
+                ),
               ),
             ),
           );
@@ -882,17 +885,21 @@ class StoryProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      size: Size.fromHeight(
-        this.indicatorHeight,
-      ),
-      foregroundPainter: IndicatorOval(
-        this.indicatorForegroundColor?? Colors.white.withOpacity(0.8),
-        this.value,
-      ),
-      painter: IndicatorOval(
-        this.indicatorColor?? Colors.white.withOpacity(0.4),
-        1.0,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+
+      child: CustomPaint(
+        size: Size.fromHeight(
+          this.indicatorHeight,
+        ),
+        foregroundPainter: IndicatorOval(
+          this.indicatorForegroundColor?? Colors.white.withOpacity(0.8),
+          this.value,
+        ),
+        painter: IndicatorOval(
+          this.indicatorColor?? Colors.white.withOpacity(0.4),
+          1.0,
+        ),
       ),
     );
   }
