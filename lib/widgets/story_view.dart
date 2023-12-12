@@ -628,17 +628,18 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
               right: 0,
               left: 0,
               top: 0,
-              height: MediaQuery.of(context).size.height/8,
+              height: MediaQuery.of(context).size.height/7,
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
+                    Colors.black.withOpacity(0.7),
                     Colors.black.withOpacity(0.6),
                     Colors.black.withOpacity(0.5),
                     Colors.black.withOpacity(0.4),
                     Colors.black.withOpacity(0.3),
                     Colors.black.withOpacity(0.2),
                     Colors.black.withOpacity(0.1),
-                    Colors.black.withOpacity(0),
+                    Colors.black.withOpacity(0.5),
                     Colors.black.withOpacity(0),
                     // Colors.black.withOpacity(0.2),
                     // Colors.black.withOpacity(0.5),
@@ -653,17 +654,18 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
               right: 0,
               left: 0,
               bottom: 0,
-              height: MediaQuery.of(context).size.height/8,
+              height: MediaQuery.of(context).size.height/7,
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
+                    Colors.black.withOpacity(0.7),
                     Colors.black.withOpacity(0.6),
                     Colors.black.withOpacity(0.5),
                     Colors.black.withOpacity(0.4),
                     Colors.black.withOpacity(0.3),
                     Colors.black.withOpacity(0.2),
                     Colors.black.withOpacity(0.1),
-                    Colors.black.withOpacity(0),
+                    Colors.black.withOpacity(0.5),
                     Colors.black.withOpacity(0),
                     // Colors.black.withOpacity(0.2),
                     // Colors.black.withOpacity(0.5),
