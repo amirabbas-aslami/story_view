@@ -632,13 +632,13 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
-                    Colors.black.withOpacity(0.7),
                     Colors.black.withOpacity(0.6),
                     Colors.black.withOpacity(0.5),
                     Colors.black.withOpacity(0.4),
                     Colors.black.withOpacity(0.3),
                     Colors.black.withOpacity(0.2),
                     Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0),
                     Colors.black.withOpacity(0),
                     // Colors.black.withOpacity(0.2),
                     // Colors.black.withOpacity(0.5),
@@ -657,13 +657,13 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
-                    Colors.black.withOpacity(0.7),
                     Colors.black.withOpacity(0.6),
                     Colors.black.withOpacity(0.5),
                     Colors.black.withOpacity(0.4),
                     Colors.black.withOpacity(0.3),
                     Colors.black.withOpacity(0.2),
                     Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0),
                     Colors.black.withOpacity(0),
                     // Colors.black.withOpacity(0.2),
                     // Colors.black.withOpacity(0.5),
