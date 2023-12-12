@@ -623,7 +623,7 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: widget.textDirection ?? TextDirection.ltr,
+      textDirection: TextDirection.rtl,
       child: Container(
         color: Colors.white,
         child: Stack(
@@ -841,22 +841,25 @@ class PageBarState extends State<PageBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: widget.pages.map((it) {
-        return Expanded(
-          child: Container(
-            padding: EdgeInsets.only(
-                right: widget.pages.last == it ? 0 : this.spacing),
-            child: StoryProgressIndicator(
-              isPlaying(it) ? widget.animation!.value : (it.shown ? 1 : 0),
-              indicatorHeight:
-                  widget.indicatorHeight == IndicatorHeight.large ? 5 : 3,
-              indicatorColor: widget.indicatorColor,
-              indicatorForegroundColor: widget.indicatorForegroundColor,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Row(
+        children: widget.pages.map((it) {
+          return Expanded(
+            child: Container(
+              padding: EdgeInsets.only(
+                  right: widget.pages.last == it ? 0 : this.spacing),
+              child: StoryProgressIndicator(
+                isPlaying(it) ? widget.animation!.value : (it.shown ? 1 : 0),
+                indicatorHeight:
+                    widget.indicatorHeight == IndicatorHeight.large ? 5 : 3,
+                indicatorColor: widget.indicatorColor,
+                indicatorForegroundColor: widget.indicatorForegroundColor,
+              ),
             ),
-          ),
-        );
-      }).toList(),
+          );
+        }).toList(),
+      ),
     );
   }
 }
