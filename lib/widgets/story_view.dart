@@ -180,18 +180,14 @@ class StoryItem {
         child: Container(
           color: Colors.grey[100],
           child: Container(
-            color: Colors.red,
+            color: Colors.black,
             child: Stack(
               children: <Widget>[
-                // StoryImage.url(
-                //   url,
-                //   controller: controller,
-                //   fit: imageFit,
-                //   requestHeaders: requestHeaders,
-                // ),
-                Container(
-                  height: 150,
-                  color: Colors.blue,
+                StoryImage.url(
+                  url,
+                  controller: controller,
+                  fit: imageFit,
+                  requestHeaders: requestHeaders,
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 16),
@@ -628,6 +624,48 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
       child: Stack(
         children: <Widget>[
           _currentView,
+          Positioned(
+              right: 0,
+              left: 0,
+              top: 0,
+              height: MediaQuery.of(context).size.height/8,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Colors.black.withOpacity(0.7),
+                    Colors.black.withOpacity(0.4),
+                    Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0),
+                    // Colors.black.withOpacity(0.2),
+                    // Colors.black.withOpacity(0.5),
+                    // Colors.black.withOpacity(0.8),
+                  ],
+                    begin: AlignmentDirectional.topCenter,
+                    end: AlignmentDirectional.bottomCenter,
+                  )
+                ),
+              )),
+          Positioned(
+              right: 0,
+              left: 0,
+              bottom: 0,
+              height: MediaQuery.of(context).size.height/8,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Colors.black.withOpacity(0.7),
+                    Colors.black.withOpacity(0.4),
+                    Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0),
+                    // Colors.black.withOpacity(0.2),
+                    // Colors.black.withOpacity(0.5),
+                    // Colors.black.withOpacity(0.8),
+                  ],
+                    begin: AlignmentDirectional.bottomCenter,
+                    end: AlignmentDirectional.topCenter,
+                  )
+                ),
+              )),
           Visibility(
             visible: widget.progressPosition != ProgressPosition.none,
             child: Align(
