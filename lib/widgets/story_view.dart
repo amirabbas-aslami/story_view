@@ -340,20 +340,20 @@ class StoryItem {
         decoration: BoxDecoration(
             color: Colors.grey[100],
             borderRadius: BorderRadius.vertical(
-              top: Radius.circular(roundedTop ? 8 : 0),
-              bottom: Radius.circular(roundedBottom ? 8 : 0),
+              top: Radius.circular(roundedTop ? 8 : 50),
+              bottom: Radius.circular(roundedBottom ? 8 : 50),
             ),
             image: DecorationImage(
-              image: image,
+              image: AssetImage(''),
               fit: BoxFit.cover,
             )),
         child: Container(
           margin: EdgeInsets.only(
-            bottom: 16,
+            bottom: 50,
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 24,
-            vertical: 50,
+            vertical: 8,
           ),
           child: Align(
             alignment: Alignment.bottomLeft,
