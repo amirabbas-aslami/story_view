@@ -636,7 +636,7 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 8,
+                    vertical: 50,
                   ),
                   child: PageBar(
                     widget.storyItems
