@@ -877,7 +877,7 @@ class StoryProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RotatedBox(
-      quarterTurns: 3,
+      quarterTurns: 2,
       child: CustomPaint(
         size: Size.fromHeight(
           this.indicatorHeight,
